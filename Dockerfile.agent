@@ -1,0 +1,2 @@
+# Container image for an isolated agent sandbox workspace.
+# Provides a private filesystem and safe environment for code/tool execution.

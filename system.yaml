@@ -1,0 +1,39 @@
+# System-wide runtime settings. Env vars (LLM_*) override the llm block.
+llm:
+  provider: hkgai           # hkgai | deepseek | mock
+  base_url: https://api1.hkgai.net
+  model: t2_hkgai-v3_fp8_1m_e7
+  temperature: 0.2
+  max_tokens: 4096
+  timeout_s: 120
+  max_retries: 3
+
+runtime:
+  root_dir: runtime          # per-agent workspaces, memory, logs live here (gitignored)
+  max_agent_steps: 15        # max reason/act iterations per agent per task
+  max_delegation_depth: 2    # how deep agents may delegate to each other
+
+orchestration:
+  negotiate: true            # assigned agents accept/decline their sub-task
+  parallel: true             # run independent sub-tasks concurrently
+  max_workers: 3
+  max_retries: 1             # retry a failed sub-task this many times
+  replan_on_failure: true
+  llm_routing: true          # group message without @mention: LLM picks single agent vs team plan
+
+human:
+  mode: cli                  # cli | auto_approve (auto_approve is used by the eval harness)
+  critical_tools: [delete_file, git_push]   # always need human approval
+  approval_timeout_s: 0      # 0 = wait forever; >0 = auto-deny after N seconds
+
+sandbox:
+  backend: local             # local | docker (falls back to local if docker is unavailable)
+  docker_image: mas-agent:latest
+  python_timeout_s: 60
+  max_file_kb: 512
+  network: false             # docker containers get no network unless true
+
+memory:
+  enabled: true
+  top_k: 5                   # lessons injected into each agent prompt
+  consolidate_every: 10      # rebuild playbook.md every N new lessons

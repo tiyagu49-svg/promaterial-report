@@ -1,0 +1,15 @@
+{
+  "report_date": "2026-11-11",
+  "source": "演示样例（合成数据，非真实业务数据）",
+  "metrics": [
+    {"name": "销售额", "value": 128650, "previous_value": 119200, "unit": " 元"},
+    {"name": "订单量", "value": 842, "previous_value": 790, "unit": " 单"},
+    {"name": "转化率", "value": 3.8, "previous_value": 4.1, "unit": "%"},
+    {"name": "退款率", "value": 1.7, "previous_value": 1.5, "unit": "%"}
+  ],
+  "observations": [
+    "销售额和订单量较前一日上升。",
+    "转化率较前一日下降，退款率较前一日上升。",
+    "没有提供渠道、活动或用户分群数据，无法判断变化原因。"
+  ]
+}

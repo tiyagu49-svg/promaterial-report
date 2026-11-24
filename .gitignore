@@ -1,0 +1,16 @@
+# Ignore local env, caches, build artifacts, and runtime data.
+.env
+.streamlit/secrets.toml
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+runtime/
+evaluation/results/
+.DS_Store
+.idea/

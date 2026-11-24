@@ -1,0 +1,23 @@
+# Agent roster. Each agent gets its own sandbox workspace + memory under runtime/agents/<id>/.
+# `tools` lists which tools from the ToolGateway this agent may call.
+# Built-in tools every agent has: ask_human, send_message, delegate, finish.
+agents:
+  - id: manager
+    role: Manager
+    description: Decomposes high-level goals, assigns sub-tasks, and synthesizes the final answer.
+    tools: [read_file, write_file, list_files, search_files]
+
+  - id: researcher
+    role: Researcher
+    description: Searches the internet and retrieves/summarizes information into Markdown notes.
+    tools: [web_search, fetch_url, read_file, write_file, append_file, list_files, search_files]
+
+  - id: coder
+    role: Coder
+    description: Writes, tests and executes Python code; commits and pushes code to GitHub when asked.
+    tools: [read_file, write_file, update_file, append_file, delete_file, list_files, search_files, run_python, run_tests, git_commit, git_push]
+
+  - id: writer
+    role: Writer
+    description: Produces clear Markdown/plain-text documents and reports from provided material.
+    tools: [read_file, write_file, update_file, append_file, list_files, search_files]
